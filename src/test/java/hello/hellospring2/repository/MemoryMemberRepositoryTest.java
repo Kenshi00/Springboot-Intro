@@ -36,7 +36,6 @@ class MemoryMemberRepositoryTest {
         repository.save(member);
 
         // store DB에서 꺼낸거
-
         // findById 반환타입이 Optional이므로 get()을 사용해서 객체로 꺼냄
         Member result = repository.findById(member.getId()).get();
 

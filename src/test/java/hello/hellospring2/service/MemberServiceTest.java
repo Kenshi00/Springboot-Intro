@@ -15,6 +15,7 @@ class MemberServiceTest {
     MemberService memberService;
     MemoryMemberRepository memberRepository;
     // BeforeEach도 AfterEach처럼 각 테스트 실행 전에 실행시켜줌.
+    // @BeforeEach -> 각 테스트 실행 전에 호출된다. 테스트가 서로 영향이 없도록 항상 새로운 객체를 생서하고, 의존관계도 새로 맺어준다.
     @BeforeEach
     public void beforeEach(){
         // Service 객체 만들때 생성자를 이용해서 만들기

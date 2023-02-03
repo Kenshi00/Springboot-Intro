@@ -18,7 +18,7 @@ public class HelloController {
         // viewResolver가 resources:templates/+{ViewName}+.html 스프링 부트 템플릿엔진 기본 viewName 매핑
     }
 
-    // MVC 방식 (템플릿 엔진 사용해서 html로 렌더링)
+    // MVC 방식 (템플릿 엔진 thymeleaf 사용해서 html로 렌더링)
     // RequestParam은 파라미터를 받아서 전달해 주는 것이다.
     // ex) localhost:8080/hello-mvc?name=spring (HTTP식 값 전달) -> hello spring
     @GetMapping("hello-mvc")
@@ -31,7 +31,7 @@ public class HelloController {
     // API 방식
     // HTTP의 body에다가 내가 직접 data를 넣어서 주는 것
     // 템플릿 엔진 필요 x, html 렌더링 x, 데이터를 그대로 넘겨줌
-    @GetMapping("hello-string")
+    @GetMapping("hello-spring")
     @ResponseBody
     public String helloString(@RequestParam("name") String name){
         return "hello " + name; // view 같은거 안거치고 "hello spring" 가 그대로 내려감
@@ -57,7 +57,6 @@ public class HelloController {
 
     static class Hello{
         // Getter Setter alt+insert 단축키
-
         // 자바빈 표준 방식, property 접근 방식 ...
         // name 변수가 private이라 외부에서 접근을 못함.
         // 그래서 public인 getName, setName으로 접근

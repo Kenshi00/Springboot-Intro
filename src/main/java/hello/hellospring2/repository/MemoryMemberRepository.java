@@ -1,11 +1,13 @@
 package hello.hellospring2.repository;
 
 import hello.hellospring2.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 // MemberRepository 인터페이스를 implements 해서 구현한 것
 // MemoryMemberRepository의 기능 - save, findById, findByName, findAll
+// @Repository
 public class MemoryMemberRepository implements MemberRepository{
 
     private static Map<Long, Member> store = new HashMap<>();

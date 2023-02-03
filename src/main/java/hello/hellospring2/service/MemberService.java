@@ -2,6 +2,8 @@ package hello.hellospring2.service;
 
 import hello.hellospring2.domain.Member;
 import hello.hellospring2.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +13,10 @@ import java.util.Optional;
 // MemberService의 기능 - join, findMembers, findOne
 
 // Ctrl + Shift + T -> test 쉽게 만들어줌
+
+// MemberController에는 @Controller, MemberService에는 @Service
+// MemberRepository에는 @Repository
+// @Service
 public class MemberService {
 
     // MemberRepository는 MemoryMemberRepository의 인터페이스
@@ -19,6 +25,9 @@ public class MemberService {
     // Service와 ServiceTest에서 서로 다른 memberRepository 객체를 사용하면
     // 테스트한 결과가 신빙성이 덜하다. (예상치 못한 오류 발생 가능).
     // 그래서 MemberService 객체를 생성할 때, memberRepository 객체를 외부에서 넣어주도록 생성자를 만들어준다.
+    // Autowired가 붙으면 MemberService를 생성을 할 때 스프링 컨테이너에 있는 memberRepository를 넣어줌
+    // @Autowired
+
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
@@ -48,6 +57,9 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
+    /**
+     * Id로 회원 찾기
+     */
     public Optional<Member> findOne(Long memberId){
         return memberRepository.findById(memberId);
     }
