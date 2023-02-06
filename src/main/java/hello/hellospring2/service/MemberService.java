@@ -4,6 +4,7 @@ import hello.hellospring2.domain.Member;
 import hello.hellospring2.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,9 @@ import java.util.Optional;
 // MemberController에는 @Controller, MemberService에는 @Service
 // MemberRepository에는 @Repository
 // @Service
+
+// jpa를 사용하기 위해서는 항상 Transactional이 있어야함
+@Transactional
 public class MemberService {
 
     // MemberRepository는 MemoryMemberRepository의 인터페이스
@@ -36,11 +40,12 @@ public class MemberService {
      * 회원 가입
      */
     public Long join(Member member){
-        // 같은 이름이 있는 중복 회원x 기능
-        // 파라미터 member의 이름을 검색한 결과가 null이 아니면 (present하면) 예외 발생
-        validateDuplicateMember(member); // 중복 회원 검증
-        memberRepository.save(member); // Map<Long, Member> store DB에 저장됨.
-        return member.getId(); // id 추출
+
+            // 같은 이름이 있는 중복 회원x 기능
+            // 파라미터 member의 이름을 검색한 결과가 null이 아니면 (present하면) 예외 발생
+            validateDuplicateMember(member); // 중복 회원 검증
+            memberRepository.save(member); // Map<Long, Member> store DB에 저장됨.
+            return member.getId(); // id 추출
     }
 
     private void validateDuplicateMember(Member member) {

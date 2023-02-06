@@ -60,7 +60,7 @@ public class MemberController {
         return "redirect:/"; // home 으로 다시 돌아감
     }
 
-    // 회원 조회를 누르면 /members를 찾음.
+    // 회원 목록을 누르면 /members를 찾음.
     // html의 <tr th:each="member:${members}">의 each는 for문 과 같음.
     // 멤버 리스트만큼 표의 행을 완성함.
     @GetMapping("/members")
